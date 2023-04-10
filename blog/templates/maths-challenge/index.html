@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+{% block stylesheet %}
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='maths-challenge/style.css') }}">
+{% endblock %}
+{% block content %}
+    <section id="header">
+        <div id="timer">
+            <p>Timer</p>
+            <p id="time">00:00:00</p>
+        </div>
+
+        <div id="score">
+            <p>Score: </p>
+            <p id="current-score">0/20</p>
+        </div>
+    </section>
+
+    <section id="questions">
+        <h3 id="question-header">Question </h3>
+        <h2 id="question"></h2>
+        <input type='number' id='answer'>
+        <p>Press enter to submit answer</p>
+        <button id="start">Start</button>
+    </section>
+    
+    {% if current_user.is_authenticated %}
+        <p class="highscore {{ current_user.id }}">Your highscore:</p>
+    {% else %}
+        <p id="anon-user">Please <a href="{{ url_for('login') }}">login</a> to view your highscore!</p>
+    {% endif %}
+{% endblock content %}
+{% block script %}
+    {{ super() }}
+    <script src="{{ url_for('static', filename='maths-challenge/script.js') }}" defer></script>
+{% endblock script %}

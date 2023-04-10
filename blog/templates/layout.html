@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ellis Burgess - {{ title }}</title>
+    {% block stylesheet %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    {% endblock %}
+    <!-- Code to include favicon modified from Stackoverflow post by Hazy McGee 30/03/2012
+    Accessed 22 Jan 2023
+    Available from: https://stackoverflow.com/questions/9943771/adding-a-favicon-to-a-static-html-page
+    Favicon generated via: https://favicon.io/favicon-generator/
+    Font and colours used match those used throughout the project.
+    -->
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon.png') }}"/>
+    <!-- End referenced code -->
+</head>
+<body>
+    <header>
+        <nav id="main-nav">
+            <!-- Code to include this FontAwesome icon copied from https://fontawesome.com/icons/bars?s=solid&f=classic -->
+            <i class="fa-solid fa-bars" id="navbar-toggle"></i>
+            <div>
+                <a href="{{ url_for('home') }}">Home</a>
+                <a href="{{ url_for('portfolio') }}">Portfolio</a>
+                <a href="{{ url_for('experience') }}">Experience</a>
+                <a href="{{ url_for('contact') }}">Contact</a>
+            </div>
+            {% if not current_user.is_authenticated %}
+            <a href="{{ url_for('login') }}" class="login-nav">Login/Register</a>
+            {% else %}
+            <a href="{{ url_for('logout') }}" class="login-nav">Logout</a>
+            {% endif %}
+        </nav>
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <aside class="flashes">
+                {% for message in messages %}
+                    <p>{{ message }}</p>
+                {% endfor %}
+                <button id="flash-close">
+                    <!-- Code to include this FontAwesome icon copied from https://fontawesome.com/icons/x?s=solid&f=classic -->
+                    <i class="fa-solid fa-x"></i>
+                </button>
+            </aside>
+        {% endif %}
+    {% endwith%}
+    </header>
+    
+    <main>
+        {% block content %}
+        {% endblock content %}
+    </main>
+
+    <footer>
+        <p>Created by Ellis Burgess as part of Cardiff University's Computing MSc.</p>
+    </footer>
+    {% block script %}
+    <!-- Code to include FontAwesome icons copied from https://fontawesome.com/kits/3ca0e018ff/use (requires login)-->
+    <!-- Accessed 18th January 2023 -->
+    <script src="https://kit.fontawesome.com/3ca0e018ff.js" crossorigin="anonymous"></script>
+    <script src="{{ url_for('static', filename='script.js') }}" defer></script>
+    {% endblock script %}
+</body>
+</html>

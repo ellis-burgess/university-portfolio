@@ -1,0 +1,85 @@
+{% extends "layout.html" %}
+{% block stylesheet %}
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='rock-paper-scissors/style.css') }}">
+{% endblock %}
+{% block content %}
+    <section id="header">
+        <h1>Rock, Paper, Scissors</h1>
+    </section>
+
+    <section id="main">
+        <div id="ui-buttons">
+            <div id="player-buttons" class="buttons">
+                <h2>Choose Your Weapon</h2>
+                <div>
+                    <button class="playerinput" id="rock"><img class="button-img"
+                        src="{{ url_for('static', filename='rock-paper-scissors/images/clenched-fist-black.png') }}" alt="rock"/>
+                    </button>
+                    <p>Rock</p>
+                </div>
+                <div>
+                    <button class="playerinput" id="paper"><img class="button-img"
+                        src="{{ url_for('static', filename='rock-paper-scissors/images/hand-black.png') }}" alt="paper"/>
+                </button>
+                <p>Paper</p>                    
+                </div>
+                <div>
+                    <button class="playerinput" id="scissors"><img class="button-img"
+                        src="{{ url_for('static', filename='rock-paper-scissors/images/hand-scissors-black.png') }}" alt="scissors"/>
+                </button>
+                <p>Scissors</p>
+                </div>
+            </div>
+            
+            <div id="computer-buttons" class="buttons">
+                <h2>Computer's Choice</h2>
+                <div>
+                    <button class="computerchoice" id="computer-rock">
+                        <img class="button-img"
+                        src="{{ url_for('static', filename='rock-paper-scissors/images/clenched-fist-black.png') }}" alt="rock"/>
+                    </button>
+                    <p>Rock</p>
+                </div>
+                <div>
+                    <button class="computerchoice" id="computer-paper">
+                        <img class="button-img"
+                        src="{{ url_for('static', filename='rock-paper-scissors/images/hand-black.png') }}" alt="paper"/>
+                    </button>
+                    <p>Paper</p>
+                </div>
+                <div>
+                    <button class="computerchoice" id="computer-scissors">
+                        <img class="button-img"
+                        src="{{ url_for('static', filename='rock-paper-scissors/images/hand-scissors-black.png') }}" alt="scissors"/>
+                    </button>
+                    <p>Scissors</p>
+                </div>
+            </div>
+        </div>
+
+    <h3 id="score">0 - 0</h3>
+    <p id="results">Play rock, paper, or scissors to begin...</p>
+
+    <button class="start">New Game</button>
+    </section>
+
+    <section id="footer">
+        <a href="https://github.com/ellis-burgess/" class="link">Created by Ellis Burgess</a>
+        <div id="icon-attribution">
+            <button id="icon-attribution-button" class="link">Icon attribution</button>
+            <div id="icon-popup">
+                <ul>
+                    <li><a href="https://icons8.com/icon/44376/hand-scissors" class="link">Hand Scissors icon by
+                            Icons8</a></li>
+                    <li><a href="https://icons8.com/icon/6643/clenched-fist" class="link">Clenched Fist icon by
+                            Icons8</a></li>
+                    <li><a href="https://icons8.com/icon/2727/hand" class="link">Hand icon by Icons8</a></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+{% endblock content %}
+{% block script %}
+    {{ super() }}
+    <script src="{{ url_for('static', filename='rock-paper-scissors/script.js') }}" defer></script>
+{% endblock script %}

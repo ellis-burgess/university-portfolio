@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+{% block content %}
+    <h1>Register</h1>
+    <form method="POST" action="">
+        {{ form.csrf_token }}
+        {{ form.username.label }} {{ form.username }}
+        {{ form.email.label }} {{ form.email }}
+        {{ form.confirm_email.label }} {{ form.confirm_email }}
+        {{ form.password.label }} {{ form.password }}
+        {{ form.confirm_password.label }} {{ form.confirm_password }}
+        {{ form.submit }}
+    </form>
+    {% for error in form.errors %}
+        <p class="error">{{ form.errors.get(error)[0] }}</p>
+    {% endfor %}
+{% endblock content %}

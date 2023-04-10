@@ -1,0 +1,8 @@
+{% extends "layout.html" %}
+{% block content %}
+    <div id="landing-page">
+        <h1>Hi, I'm Ellis.</h1>
+        <h2>I'm a Computing MSc student at Cardiff University.</h2>
+        <p><a href='{{ url_for("portfolio") }}'>You can view my recent projects</a>, or <a href='{{ url_for("contact") }}'>drop me a message</a>.</p>
+    </div>
+{% endblock content %}

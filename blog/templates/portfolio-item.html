@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+{% from "macros.html" import display_comment %}
+{% block content %}
+    <section class="portfolio-details">
+        <h1>{{ portfolio_item.title }}</h1>
+        <pre>{{ portfolio_item.description }}</pre>
+        <a href="{{ demo_url }}">View a live version here!</a>
+    </section>
+    <section class="comments">
+        <h2>Comments</h2>
+        {% if current_user.is_authenticated %}
+        <h3>Add a comment</h3>
+        <form method="POST", action="">
+            {{ form.csrf_token }}
+            {{ form.comment }}
+            {{ form.submit }}
+        </form>
+        {% else %}
+        <a href="{{ url_for('login') }}">Please login to post a comment.</a>
+        {% endif %}
+        {% for comment in comments %}
+            {% if comment.portfolio_id == portfolio_item.id %}
+                <article class="comment">
+                    {{ display_comment(comment, current_user) }}
+                </article>
+            {% endif %}
+        {% endfor %}
+    </section>
+{% endblock %}

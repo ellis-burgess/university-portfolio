@@ -1,0 +1,51 @@
+{% macro display_experience(entry) %}
+    <section class="experience">
+        <h3>{{ entry.title }}
+            {% if entry.company %}
+            at {{ entry.company }}
+            {% endif %}
+        </h3>
+        <h4>{{ display_date(entry.start_date) }} - 
+            {% if entry.end_date %}
+                {{ display_date(entry.end_date) }}
+            {% else %}
+                present
+            {% endif %}
+        </h4>
+        <ul>
+            {% set skills = entry.skills.split('\n') %}
+            {% for skill in skills %}
+            <li>{{ skill }}</li>
+            {% endfor %}
+        </ul>
+    </section>
+{% endmacro %}
+
+{% macro display_portfolio(entry) %}
+    <a href="/portfolio/{{ entry.id }}"><h2>{{ entry.title }}</h2></a>
+    <p>{{ entry.short_description }}</p>
+{% endmacro %}
+
+{% macro display_comment(comment, current_user) %}
+    <p><strong>{{ comment.author }}</strong> <span class="comment-date">{{ display_date(comment.date) }} {{ display_time(comment.date) }}</span></p>
+    <div>
+    <p>{{ comment.content }}</p>
+    {% if current_user.username == comment.author %}
+        <!-- Code to include this FontAwesome icon copied from https://fontawesome.com/icons/x?s=solid&f=classic -->
+        <i class="fa-solid fa-x delete-comment {{ comment.id }}"></i>
+    {% elif current_user.username %}
+        <!-- Code to include this FontAwesome icon copied from https://fontawesome.com/icons/flag?s=solid&f=classic -->
+        <i class="fa-solid fa-flag flag-comment {{ current_user.id }} {{ comment.id }}"></i>
+    </div>
+    {% endif %}
+{% endmacro %}
+
+{% macro display_date(date) %}
+    {% set date_display = date.strftime("%x") %}
+    {{ date_display }}
+{% endmacro %}
+
+{% macro display_time(date) %}
+    {% set time_display = date.strftime("%X") %}
+    {{ time_display }}
+{% endmacro %}

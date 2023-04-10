@@ -1,0 +1,10 @@
+{% extends "layout.html" %}
+{% from "macros.html" import display_portfolio %}
+{% block content %}
+    <h1>Portfolio</h1>
+    {% for entry in entries %}
+        <article class="portfolio-item">
+            {{ display_portfolio(entry) }}
+        </article>
+    {% endfor %}
+{% endblock content %}

@@ -1,0 +1,146 @@
+@import "../style.css";
+
+main {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: space-between;
+    color: var(--text-color);
+    border: 2px solid var(--alt-text);
+    padding: 0 0;
+    margin: 1em auto;
+    max-width: 50em;
+}
+
+h1, h3 {
+    text-align: center;
+    padding: 0.5em;
+}
+
+p {
+    font-size: 1.2em;
+    text-align: center;
+}
+
+#header {
+    width: 100%;
+    background: var(--alt-background-color);
+}
+
+#main {
+    background: var(--background-color);
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: space-around;
+    padding-top: 1.5em;
+    gap: 1.5em;
+}
+
+#footer {
+    width: 100%;
+    background: var(--alt-background-color);
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    padding: 0.8em;
+}
+
+button {
+    border: solid var(--text-color) 2px;
+    border-radius: 5%;
+    width: 70px;
+    height: 70px;
+    color: var(--text-color);
+    background: var(--alt-background-color);
+}
+
+.start {
+    width: 100px;
+    align-self: center;
+    margin: 1em;
+    font-size: 1.2em;
+}
+
+.button-img {
+    width: 50px;
+    height: 50px;
+}
+
+#ui-buttons {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.buttons {
+    display: grid;
+    grid-template-areas:
+        "title title title"
+        "buttons buttons buttons";
+    justify-content: center;
+    gap: 0.5em;
+    padding: 1em;
+    text-align: center;
+}
+
+.buttons > h2 {
+    grid-area: title;
+}
+
+.buttons > div > p {
+    margin: 0;
+}
+
+#icon-attribution {
+    position: relative;
+}
+
+#icon-popup {
+    display: none;
+    position: absolute;
+    bottom: 2.5em;
+    right: 0;
+    width: max-content;
+    background: var(--alt-background-color);
+    border-radius: 1em;
+}
+
+li > a {
+    color: var(--alt-text) !important;
+}
+
+li {
+    list-style: none;
+    margin: 0;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0.5em;
+}
+
+.hidden {
+    display: block !important;
+}
+
+.link {
+    background: none;
+    border: none;
+    width: auto;
+    height: auto;
+    color: var(--text-color);
+    font-size: 1em;
+}
+
+.link:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.link:active {
+    background: none;
+    border: none;
+}

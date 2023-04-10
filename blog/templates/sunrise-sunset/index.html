@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+{% block stylesheet %}
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='sunrise-sunset/style.css') }}">
+{% endblock %}
+{% block content %}
+    <h1>Sunrise and Sunset</h1>
+    <section id="user-input">
+        <label for="location">Enter a location:</label>
+        <input type="text" id="location" name="location">
+        <label for="calendat">Choose a date (optional):</label>
+        <input type="date" id="calendar">
+        <div>
+            <button id="submit">Submit</button>
+            or
+            <button id="my-location">Use my location</button>
+        </div>
+    </section>
+    <section id="attribution">
+        <p>Sunrise and Sunset data taken from <a href="https://sunrise-sunset.org/api">The Sunrise-Sunset API</a>.</p>
+    </section>
+{% endblock %}
+{% block script %}
+    {{ super() }}
+    <script src="{{ url_for('static', filename='sunrise-sunset/script.js') }}" defer></script>
+{% endblock %}

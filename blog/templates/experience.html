@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+{% from "macros.html" import display_experience %}
+{% block content %}
+    <h1>Experience</h1>
+    <h2 class="exp-header">Education</h2>
+    {% for entry in entries|sort(attribute='start_date', reverse=True) %}
+        {% if entry.is_professional == 0 %}
+            {{ display_experience(entry) }}
+        {% endif %}
+    {% endfor %}
+    <h2 class="exp-header">Work Experience</h2>
+    {% for entry in entries|sort(attribute='start_date', reverse=True) %}
+        {% if entry.is_professional == 1 %}
+            {{ display_experience(entry) }}
+        {% endif %}
+    {% endfor %}
+{% endblock content %}
